@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 18:31:52 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/04/07 18:31:52 by fbanzo-s         ###   ########.fr       */
+/*   Created: 2025/01/16 14:52:19 by fbanzo-s          #+#    #+#             */
+/*   Updated: 2025/01/16 14:52:19 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <limits.h>
-
-// utils.c
-void	ft_error(int error);
-
-// parser.c
-char	*ft_checkfileext(char *av, char *ext);
-
-#endif
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
+{
+	if (!lst)
+		return ;
+	del(lst->content);
+	free(lst);
+}

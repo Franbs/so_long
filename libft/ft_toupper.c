@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 18:31:52 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/04/07 18:31:52 by fbanzo-s         ###   ########.fr       */
+/*   Created: 2024/12/27 20:52:48 by fbanzo-s          #+#    #+#             */
+/*   Updated: 2024/12/27 20:52:48 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <limits.h>
-
-// utils.c
-void	ft_error(int error);
-
-// parser.c
-char	*ft_checkfileext(char *av, char *ext);
-
-#endif
+int	ft_toupper(int c)
+{
+	if (c >= 97 && c <= 122)
+		return (c - ('a' - 'A'));
+	return (c);
+}

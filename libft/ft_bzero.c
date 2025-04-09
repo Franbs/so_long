@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 18:31:52 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/04/07 18:31:52 by fbanzo-s         ###   ########.fr       */
+/*   Created: 2025/01/10 22:26:16 by fbanzo-s          #+#    #+#             */
+/*   Updated: 2025/01/10 22:26:16 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <limits.h>
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*ptr;
+	size_t			i;
 
-// utils.c
-void	ft_error(int error);
-
-// parser.c
-char	*ft_checkfileext(char *av, char *ext);
-
-#endif
+	ptr = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		ptr[i] = 0;
+		i++;
+	}
+}

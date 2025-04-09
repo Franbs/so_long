@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 18:31:52 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/04/07 18:31:52 by fbanzo-s         ###   ########.fr       */
+/*   Created: 2024/12/27 20:10:00 by fbanzo-s          #+#    #+#             */
+/*   Updated: 2024/12/27 20:10:00 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <limits.h>
-
-// utils.c
-void	ft_error(int error);
-
-// parser.c
-char	*ft_checkfileext(char *av, char *ext);
-
-#endif
+int	ft_isalpha(int c)
+{
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
+	return (0);
+}

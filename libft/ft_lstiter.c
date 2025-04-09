@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 18:31:52 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/04/07 18:31:52 by fbanzo-s         ###   ########.fr       */
+/*   Created: 2025/01/16 16:43:05 by fbanzo-s          #+#    #+#             */
+/*   Updated: 2025/01/16 16:43:05 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <limits.h>
-
-// utils.c
-void	ft_error(int error);
-
-// parser.c
-char	*ft_checkfileext(char *av, char *ext);
-
-#endif
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	if (!lst || !f)
+		return ;
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}

@@ -6,7 +6,7 @@
 #    By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 12:36:38 by fbanzo-s          #+#    #+#              #
-#    Updated: 2025/04/07 18:13:40 by fbanzo-s         ###   ########.fr        #
+#    Updated: 2025/04/09 20:38:30 by fbanzo-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ INCLUDES = -I$(LIBFT_DIR) -I.
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRC = so_long.c
+SRC = so_long.c utils.c parser.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

@@ -14,5 +14,11 @@
 
 int	main(int ac, char **av)
 {
+	if (ac != 2)
+		return (0);
+	if (!ft_checkfileext(av[1], ".ber"))
+	{
+		return (0);
+	}
 	return (0);
 }
