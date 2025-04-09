@@ -12,12 +12,14 @@
 
 #include "so_long.h"
 
-char	*ft_checkfileext(char *av, char *ext)
+char	*ft_checkext(char *av, char *ext)
 {
 	int	len;
 	int	lenext;
 	int	start;
 
+	if (ft_isalnum(av[0]) == 0)
+		ft_error(1);
 	len = ft_strlen(av);
 	lenext = ft_strlen(ext);
 	start = (len - lenext);
