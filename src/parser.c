@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 20:37:37 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/04/09 20:37:37 by fbanzo-s         ###   ########.fr       */
+/*   Created: 2025/04/09 20:36:54 by fbanzo-s          #+#    #+#             */
+/*   Updated: 2025/04/09 20:36:54 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
-void	ft_error(int error)
+char	*ft_checkext(char *av, char *ext)
 {
-	if (error == 1)
-	{
-		ft_putstr_fd("Error\n", 2);
-		exit(1);
-	}
+	int	len;
+	int	lenext;
+	int	start;
+
+	if (ft_isalnum(av[0]) == 0)
+		ft_error(1);
+	len = ft_strlen(av);
+	lenext = ft_strlen(ext);
+	start = (len - lenext);
+	return (ft_strnstr(av + start, ext, lenext));
 }

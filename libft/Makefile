@@ -22,10 +22,14 @@ ft_memcpy.c ft_memcmp.c ft_memmove.c ft_substr.c ft_strjoin.c \
 ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
 ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
+SRC_GNL = get_next_line.c get_next_line_utils.c
+SRC_PRINTF = ft_printf.c ft_putchar_p.c ft_putstr_p.c ft_putnbr_p.c \
+ft_puthex_fd.c ft_putptr_fd.c
+
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstadd_back.c ft_lstsize.c \
 ft_lstlast.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-SRC_OBJ = $(SRC:.c=.o)
+SRC_OBJ = $(SRC:.c=.o) $(SRC_GNL:.c=.o) $(SRC_PRINTF:.c=.o)
 BONUS_OBJ = $(BONUS:.c=.o)
 
 all: $(NAME)

@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putptr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 14:55:09 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/01/05 14:55:09 by fbanzo-s         ###   ########.fr       */
+/*   Created: 2025/01/24 19:21:12 by fbanzo-s          #+#    #+#             */
+/*   Updated: 2025/01/24 19:21:12 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strdup(const char *s)
+void	ft_putptr_fd(void *ptr, int fd, int *count)
 {
-	size_t	len;
-	char	*dup;
-	size_t	i;
-
-	if (!s)
-		return (NULL);
-	len = ft_strlen(s);
-	dup = (char *)malloc(len + 1);
-	if (!dup)
-		return (NULL);
-	i = 0;
-	while (s[i])
+	if (!ptr)
 	{
-		dup[i] = s[i];
-		i++;
+		ft_putstr_p("(nil)", fd, count);
+		return ;
 	}
-	dup[i] = '\0';
-	return (dup);
+	ft_putstr_p("0x", fd, count);
+	ft_puthex_fd((unsigned long)ptr, fd, count, HEX_LOW_BASE);
 }

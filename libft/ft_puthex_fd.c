@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_puthex_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 14:55:09 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/01/05 14:55:09 by fbanzo-s         ###   ########.fr       */
+/*   Created: 2025/01/24 19:59:05 by fbanzo-s          #+#    #+#             */
+/*   Updated: 2025/01/24 19:59:05 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strdup(const char *s)
+void	ft_puthex_fd(unsigned long nbr, int fd, int *count, char *base)
 {
-	size_t	len;
-	char	*dup;
-	size_t	i;
+	unsigned long	baselen;
 
-	if (!s)
-		return (NULL);
-	len = ft_strlen(s);
-	dup = (char *)malloc(len + 1);
-	if (!dup)
-		return (NULL);
-	i = 0;
-	while (s[i])
+	baselen = ft_strlen(base);
+	if (nbr >= baselen)
 	{
-		dup[i] = s[i];
-		i++;
+		ft_puthex_fd((nbr / baselen), fd, count, base);
+		ft_putchar_p(base[nbr % baselen], fd, count);
 	}
-	dup[i] = '\0';
-	return (dup);
+	else
+	{
+		ft_putchar_p(base[nbr], fd, count);
+	}
 }
