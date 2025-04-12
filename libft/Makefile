@@ -10,6 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
+RED     = \033[1;31m
+GREEN   = \033[1;32m
+YELLOW  = \033[1;33m
+RESET   = \033[0m
+
 NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -23,31 +28,43 @@ ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
 ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
 SRC_GNL = get_next_line.c get_next_line_utils.c
+
 SRC_PRINTF = ft_printf.c ft_putchar_p.c ft_putstr_p.c ft_putnbr_p.c \
 ft_puthex_fd.c ft_putptr_fd.c
 
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstadd_back.c ft_lstsize.c \
 ft_lstlast.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-SRC_OBJ = $(SRC:.c=.o) $(SRC_GNL:.c=.o) $(SRC_PRINTF:.c=.o)
-BONUS_OBJ = $(BONUS:.c=.o)
+OBJ_DIR = obj
+
+SRC_OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o)) $(addprefix $(OBJ_DIR)/,$(SRC_PRINTF:.c=.o)) $(addprefix $(OBJ_DIR)/,$(SRC_GNL:.c=.o))
+BONUS_OBJ = $(addprefix $(OBJ_DIR)/,$(BONUS:.c=.o))
 
 all: $(NAME)
 
-%.o: %.c
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(SRC_OBJ) Makefile
+	@echo "$(YELLOW)Compilando libft...$(RESET)"
 	ar rcs $(NAME) $(SRC_OBJ)
+	@echo "$(GREEN)Hecho$(RESET)"
 
 bonus: $(SRC_OBJ) $(BONUS_OBJ)
+	@echo "$(YELLOW)Compilando libft bonus...$(RESET)"
 	ar rcs $(NAME) $(BONUS_OBJ)
+	@echo "$(GREEN)Hecho$(RESET)"
 
 clean:
-	rm -f $(SRC_OBJ) $(BONUS_OBJ)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@echo "$(RED)Limpiando libft...$(RESET)"
+	@rm -f $(NAME)
+	@echo "$(GREEN)Hecho$(RESET)"
 
 re: fclean all
 

@@ -26,12 +26,16 @@ typedef struct s_content
 }	t_content;
 
 // utils.c
-void	ft_error(int error);
-
+void		ft_error(int error);
+void		ft_getrowscols(char *file, t_content *content);
 // parser.c
-char	*ft_checkext(char *av, char *ext);
-
+char		*ft_checkext(char *av, char *ext);
 // map.c
-t_content	*ft_inimap();
+void		ft_print_map(char **map, t_content *content);
+char		**ft_savemap(char *file, t_content *content);
+// content.c
+t_content	*ft_initmap(void);
+void		ft_checkforcontent(char c, t_content *content);
+void		ft_countcontent(char **map, t_content *content);
 
 #endif
