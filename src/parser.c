@@ -19,7 +19,7 @@ char	*ft_checkext(char *av, char *ext)
 	int	start;
 
 	if (ft_isalnum(av[0]) == 0)
-		ft_error("Error. Wrong file name struct");
+		ft_error("Error. Wrong file name struct", NULL, -1);
 	len = ft_strlen(av);
 	lenext = ft_strlen(ext);
 	start = (len - lenext);

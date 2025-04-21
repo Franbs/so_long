@@ -21,14 +21,15 @@ void	ft_readmap(char *file)
 	ft_savemap(file, content);
 	ft_countcontent(content);
 	ft_print_map(content);
+	ft_freecontent(content);
 }
 
 int	main(int ac, char **av)
 {
 	if (ac != 2)
-		ft_error("Error. Send only a file");
+		ft_error("Error. Send only a file", NULL, -1);
 	if (!ft_checkext(av[1], ".ber"))
-		ft_error("Error. File ext must be .ber");
+		ft_error("Error. File ext must be .ber", NULL, -1);
 	ft_readmap(av[1]);
 	return (0);
 }

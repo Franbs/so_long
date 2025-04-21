@@ -34,6 +34,6 @@ int	ft_atoi(const char *nptr)
 		nptr++;
 	}
 	if ((sign * num) > 2147483647 || (sign * num) < -2147483648)
-		ft_error(1);
+		ft_error("Error");
 	return (num * sign);
 }

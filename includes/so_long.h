@@ -27,7 +27,8 @@ typedef struct s_content
 }	t_content;
 
 // utils.c
-void		ft_error(char *str);
+void		ft_error(char *str, t_content *content, int fd);
+void		ft_cleangnl(int fd);
 // utils_content.c
 void		ft_getrowscols(char *file, t_content *content);
 void		ft_countcontent(t_content *content);
@@ -38,5 +39,6 @@ void		ft_print_map(t_content *content);
 void		ft_savemap(char *file, t_content *content);
 // content.c
 t_content	*ft_initcontent(void);
+void		ft_freecontent(t_content *content);
 
 #endif

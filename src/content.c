@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 14:55:27 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/04/21 13:47:05 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:17:46 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,23 @@ t_content	*ft_initcontent(void)
 	content->e = 0;
 	content->c = 0;
 	return (content);
+}
+
+void	ft_freecontent(t_content *content)
+{
+	int	i;
+
+	if (!content)
+		return ;
+	if (content->map)
+	{
+		i = 0;
+		while (i < content->rows && content->map[i])
+		{
+			free(content->map[i]);
+			i++;
+		}
+		free(content->map);
+	}
+	free(content);
 }

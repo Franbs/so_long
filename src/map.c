@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:29:40 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/04/21 13:55:51 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:42:59 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,21 @@ void	ft_mallocmap(t_content *content, int fd)
 
 	content->map = malloc(sizeof(char *) * (content->rows + 1));
 	if (!content->map)
-		return ;
+		ft_error("Error", content, fd);
 	i = 0;
 	while (i < content->rows)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break ;
+			ft_error("Error", content, fd);
 		if (line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 1] = '\0';
 		content->map[i] = malloc(sizeof(char) * (content->cols + 1));
 		if (!content->map[i])
-			ft_error("Error");
+		{
+			free(line);
+			ft_error("Error", content, fd);
+		}
 		ft_strlcpy(content->map[i], line, content->cols + 1);
 		free(line);
 		i++;
@@ -44,8 +47,10 @@ void	ft_savemap(char *file, t_content *content)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		ft_error("Error opening file");
+		ft_error("Error opening file", content, fd);
 	ft_mallocmap(content, fd);
+	ft_cleangnl(fd);
+	close(fd);
 }
 
 void	ft_print_map(t_content *content)
@@ -53,7 +58,7 @@ void	ft_print_map(t_content *content)
 	int	i;
 
 	if (!content->map)
-		ft_error("Error");
+		ft_error("Error", content, -1);
 	printf("========= MAP DEBUG =========\n");
 	printf("Dimensions: %d rows x %d cols\n", content->rows, content->cols);
 	printf("Player: %d | Exits: %d | Collectibles: %d\n",
