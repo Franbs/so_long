@@ -18,24 +18,25 @@
 
 typedef struct s_content
 {
-	int	rows;
-	int	cols;
-	int	p;
-	int	e;
-	int	c;
+	char	**map;
+	int		rows;
+	int		cols;
+	int		p;
+	int		e;
+	int		c;
 }	t_content;
 
 // utils.c
-void		ft_error(int error);
+void		ft_error(char *str);
+// utils_content.c
 void		ft_getrowscols(char *file, t_content *content);
+void		ft_countcontent(t_content *content);
 // parser.c
 char		*ft_checkext(char *av, char *ext);
 // map.c
-void		ft_print_map(char **map, t_content *content);
-char		**ft_savemap(char *file, t_content *content);
+void		ft_print_map(t_content *content);
+void		ft_savemap(char *file, t_content *content);
 // content.c
-t_content	*ft_initmap(void);
-void		ft_checkforcontent(char c, t_content *content);
-void		ft_countcontent(char **map, t_content *content);
+t_content	*ft_initcontent(void);
 
 #endif
