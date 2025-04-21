@@ -6,11 +6,26 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 13:44:20 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/04/21 14:49:42 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/04/21 14:57:21 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	ft_setcols(t_content *content, char *line, int current_len, int fd)
+{
+	if (content->rows == 0)
+		content->cols = current_len;
+	else
+	{
+		if (content->cols != current_len)
+		{
+			free(line);
+			ft_error("Error. All rows and cols must have same length",
+				content, fd);
+		}
+	}
+}
 
 void	ft_getrowscols(char *file, t_content *content)
 {
@@ -27,16 +42,7 @@ void	ft_getrowscols(char *file, t_content *content)
 		current_len = (int)ft_strlen(line);
 		if (current_len > 0 && line[current_len - 1] == '\n')
 			current_len--;
-		if (content->rows == 0)
-			content->cols = current_len;
-		else
-		{
-			if (content->cols != current_len)
-			{
-				free(line);
-				ft_error("Error. All rows and cols must have same length", content, fd);
-			}
-		}
+		ft_setcols(content, line, current_len, fd);
 		content->rows++;
 		free(line);
 		line = get_next_line(fd);

@@ -29,7 +29,8 @@ void	ft_cleangnl(int fd)
 	if (fd < 0)
 		return ;
 	line = get_next_line(fd);
-	while (line) {
+	while (line)
+	{
 		free(line);
 		line = get_next_line(fd);
 	}

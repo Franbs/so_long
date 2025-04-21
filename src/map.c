@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:29:40 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/04/21 14:42:59 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:00:44 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ void	ft_print_map(t_content *content)
 
 	if (!content->map)
 		ft_error("Error", content, -1);
-	printf("========= MAP DEBUG =========\n");
-	printf("Dimensions: %d rows x %d cols\n", content->rows, content->cols);
-	printf("Player: %d | Exits: %d | Collectibles: %d\n",
+	ft_printf("========= MAP DEBUG =========\n");
+	ft_printf("Dimensions: %d rows x %d cols\n", content->rows, content->cols);
+	ft_printf("Player: %d | Exits: %d | Collectibles: %d\n",
 		content->p, content->e, content->c);
 	i = 0;
 	while (content->map[i] && i < content->rows)
 	{
-		printf("%2d: [%s]\n", i, content->map[i]);
+		ft_printf("%d: [%s]\n", i, content->map[i]);
 		i++;
 	}
 	if (i != content->rows)
-		printf("WARNING: Map has %d rows but content claims %d\n",
+		ft_printf("WARNING: Map has %d rows but content claims %d\n",
 			i, content->rows);
-	printf("========= END DEBUG =========\n");
+	ft_printf("========= END DEBUG =========\n");
 }
