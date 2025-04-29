@@ -6,7 +6,7 @@
 #    By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 12:36:38 by fbanzo-s          #+#    #+#              #
-#    Updated: 2025/04/21 13:44:00 by fbanzo-s         ###   ########.fr        #
+#    Updated: 2025/04/29 16:28:57 by fbanzo-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,15 @@ CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I$(LIBFT_DIR) -I.
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
+MLX_DIR = ./MLX42
+MLX = $(MLX_DIR)/build/libmlx42.a
+MLX_FLAGS = -ldl -lglfw -pthread -lm
+MLX_INC = -I$(MLX_DIR)/include
 
 SRC_DIR = src
 OBJ_DIR = obj
 
-SRCS = so_long.c utils.c parser.c map.c content.c utils_content.c
+SRCS = so_long.c utils.c parser.c map.c content.c utils_content.c mlx_utils.c
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
@@ -42,7 +46,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
 
 $(NAME): $(LIBFT) $(OBJ) $(OBJ_MAIN)
 	@echo "$(YELLOW)Compilando $@...$(RESET)"
-	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT_DIR) -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(MLX) $(MLX_INC) $(MLX_FLAGS) -L$(LIBFT_DIR) -lft -o $(NAME)
 	@echo "$(GREEN)Hecho$(RESET)"
 
 clean:

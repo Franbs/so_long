@@ -13,8 +13,11 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include <limits.h>
+# define IMG_W 32
+# define IMG_H 32
 
 typedef struct s_content
 {
@@ -40,5 +43,7 @@ void		ft_savemap(char *file, t_content *content);
 // content.c
 t_content	*ft_initcontent(void);
 void		ft_freecontent(t_content *content);
+//mlx_utils.c
+void		ft_close(mlx_key_data_t keydata, void* param);
 
 #endif
