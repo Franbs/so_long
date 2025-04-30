@@ -45,5 +45,7 @@ t_content	*ft_initcontent(void);
 void		ft_freecontent(t_content *content);
 //mlx_utils.c
 void		ft_close(mlx_key_data_t keydata, void* param);
+mlx_image_t    *ft_load_textures(t_content *content, mlx_t *mlx);
+void    ft_render_map(t_content *content, mlx_t *mlx, mlx_image_t *wall_img);
 
 #endif

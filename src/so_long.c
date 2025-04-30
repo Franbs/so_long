@@ -23,9 +23,12 @@ void	ft_readmap(char *file, t_content *content)
 void	ft_startmlx(t_content *content)
 {
 	mlx_t	*mlx;
+	mlx_image_t	*wall_img;
 
 	mlx = mlx_init((content->cols * IMG_W), (content->rows * IMG_H),
 			"SO_LONG", false);
+	wall_img = ft_load_textures(content, mlx);
+	ft_render_map(content, mlx, wall_img);
 	mlx_key_hook(mlx, &ft_close, mlx);
 	mlx_loop(mlx);
 }
