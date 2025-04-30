@@ -27,7 +27,6 @@ void	ft_startmlx(t_content *content)
 	mlx = mlx_init((content->cols * IMG_W), (content->rows * IMG_H),
 			"SO_LONG", false);
 	mlx_key_hook(mlx, &ft_close, mlx);
-	ft_mlxsprites(mlx);
 	mlx_loop(mlx);
 }
 
