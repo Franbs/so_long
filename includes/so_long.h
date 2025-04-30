@@ -29,6 +29,15 @@ typedef struct s_content
 	int		c;
 }	t_content;
 
+typedef struct s_game
+{
+	t_content	*content;
+	mlx_t		*mlx;
+	mlx_image_t	*wall;
+	mlx_image_t	*floor;
+}	t_game;
+
+
 // utils.c
 void		ft_error(char *str, t_content *content, int fd);
 void		ft_cleangnl(int fd);
@@ -43,9 +52,11 @@ void		ft_savemap(char *file, t_content *content);
 // content.c
 t_content	*ft_initcontent(void);
 void		ft_freecontent(t_content *content);
-//mlx_utils.c
+// mlx_utils.c
 void		ft_close(mlx_key_data_t keydata, void* param);
-mlx_image_t    *ft_load_textures(t_content *content, mlx_t *mlx);
-void    ft_render_map(t_content *content, mlx_t *mlx, mlx_image_t *wall_img);
+// game.c
+t_game		*ft_initgame(t_content *content);
+void		ft_freegame(t_game *game);
+void		ft_render(t_game *game);
 
 #endif

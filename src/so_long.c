@@ -22,15 +22,13 @@ void	ft_readmap(char *file, t_content *content)
 
 void	ft_startmlx(t_content *content)
 {
-	mlx_t	*mlx;
-	mlx_image_t	*wall_img;
+	t_game	*game;
 
-	mlx = mlx_init((content->cols * IMG_W), (content->rows * IMG_H),
-			"SO_LONG", false);
-	wall_img = ft_load_textures(content, mlx);
-	ft_render_map(content, mlx, wall_img);
-	mlx_key_hook(mlx, &ft_close, mlx);
-	mlx_loop(mlx);
+	game = ft_initgame(content);
+	ft_render(game);
+	mlx_key_hook(game->mlx, &ft_close, game->mlx);
+	mlx_loop(game->mlx);
+	ft_freegame(game);
 }
 
 int	main(int ac, char **av)
@@ -44,6 +42,5 @@ int	main(int ac, char **av)
 	content = ft_initcontent();
 	ft_readmap(av[1], content);
 	ft_startmlx(content);
-	ft_freecontent(content);
 	return (0);
 }
