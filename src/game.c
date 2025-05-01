@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:55:59 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/01 18:27:07 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/01 19:44:03 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_settextures(t_game *game)
 	texture = ft_applytexture("./sprites/floor.png", game);
 	game->floorimg = mlx_texture_to_image(game->mlx, texture);
 	ft_freetexture(texture);
-	texture = ft_applytexture("./sprites/wall2.png", game);
+	texture = ft_applytexture("./sprites/wall3.png", game);
 	game->wallimg = mlx_texture_to_image(game->mlx, texture);
 	ft_freetexture(texture);
 	texture = ft_applytexture("./sprites/coinsmall.png", game);
@@ -37,9 +37,6 @@ void	ft_settextures(t_game *game)
 	ft_freetexture(texture);
 	texture = ft_applytexture("./sprites/exit.png", game);
 	game->eimg = mlx_texture_to_image(game->mlx, texture);
-	ft_freetexture(texture);
-	texture = ft_applytexture("./sprites/player2.png", game);
-	game->pimg = mlx_texture_to_image(game->mlx, texture);
 	ft_freetexture(texture);
 }
 
@@ -55,6 +52,7 @@ t_game	*ft_initgame(t_content *content)
 			"so_long", false);
 	if (!game->mlx)
 		ft_errorgame("Error al inicializar mlx.", game, -1);
+	game->player = ft_initplayer(game);
 	ft_settextures(game);
 	return (game);
 }
@@ -63,10 +61,12 @@ void	ft_freegame(t_game *game)
 {
 	if (!game)
 		return ;
+	ft_freeimg(game);
+	if (game->player)
+		free(game->player);
 	if (game->content)
 		ft_freecontent(game->content);
 	if (game->mlx)
 		mlx_terminate(game->mlx);
-	ft_freeimg(game);
 	free(game);
 }

@@ -6,11 +6,16 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 18:25:51 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/01 18:30:50 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/01 19:04:02 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	ft_renderplayer(t_game *game, int i, int j)
+{
+	mlx_image_to_window(game->mlx, game->player->imgdown, j * IMG_W, i * IMG_H);
+}
 
 void	ft_setimgstowindow(t_game *game, char tile, int i, int j)
 {
@@ -22,7 +27,7 @@ void	ft_setimgstowindow(t_game *game, char tile, int i, int j)
 	if (tile == 'C')
 		mlx_image_to_window(game->mlx, game->cimg, j * IMG_W, i * IMG_H);
 	if (tile == 'P')
-		mlx_image_to_window(game->mlx, game->pimg, j * IMG_W, i * IMG_H);
+		ft_renderplayer(game, i, j);
 }
 
 void	ft_render(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:27:54 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/01 17:59:11 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/01 19:11:12 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,14 @@ void	ft_freeimg(t_game *game)
 		mlx_delete_image(game->mlx, game->cimg);
 	if (game->eimg)
 		mlx_delete_image(game->mlx, game->eimg);
-	if (game->pimg)
-		mlx_delete_image(game->mlx, game->pimg);
+	if (game->player->imgdown)
+		mlx_delete_image(game->mlx, game->player->imgdown);
+	if (game->player->imgup)
+		mlx_delete_image(game->mlx, game->player->imgup);
+	if (game->player->imgleft)
+		mlx_delete_image(game->mlx, game->player->imgleft);
+	if (game->player->imgright)
+		mlx_delete_image(game->mlx, game->player->imgright);
 }
 
 void	ft_freetexture(mlx_texture_t	*texture)
