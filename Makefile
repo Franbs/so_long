@@ -6,7 +6,7 @@
 #    By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 12:36:38 by fbanzo-s          #+#    #+#              #
-#    Updated: 2025/05/01 18:26:34 by fbanzo-s         ###   ########.fr        #
+#    Updated: 2025/05/01 18:41:37 by fbanzo-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ RESET   = \033[0m
 NAME = so_long
 HEADER = includes/so_long.h
 CC = cc
-#CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
+# -fsanitize=address
 INCLUDES = -I$(LIBFT_DIR) -I.
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
