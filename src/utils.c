@@ -22,6 +22,16 @@ void	ft_error(char *str, t_content *content, int fd)
 	exit(1);
 }
 
+void	ft_errorgame(char *str, t_game *game, int fd)
+{
+	if (fd >= 0)
+		ft_cleangnl(fd);
+	if (game)
+		ft_freegame(game);
+	ft_printf("%s\n", str);
+	exit(1);
+}
+
 void	ft_cleangnl(int fd)
 {
 	char	*line;

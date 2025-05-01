@@ -6,7 +6,7 @@
 #    By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 12:36:38 by fbanzo-s          #+#    #+#              #
-#    Updated: 2025/04/30 16:57:33 by fbanzo-s         ###   ########.fr        #
+#    Updated: 2025/05/01 18:26:34 by fbanzo-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RESET   = \033[0m
 NAME = so_long
 HEADER = includes/so_long.h
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+#CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I$(LIBFT_DIR) -I.
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -30,7 +30,8 @@ MLX_INC = -I$(MLX_DIR)/include
 SRC_DIR = src
 OBJ_DIR = obj
 
-SRCS = so_long.c utils.c parser.c map.c content.c utils_content.c mlx_utils.c game.c
+SRCS = so_long.c utils.c parser.c map.c content.c utils_content.c \
+mlx_utils.c game.c render.c
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 

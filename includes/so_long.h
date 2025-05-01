@@ -33,13 +33,17 @@ typedef struct s_game
 {
 	t_content	*content;
 	mlx_t		*mlx;
-	mlx_image_t	*wall;
-	mlx_image_t	*floor;
+	mlx_image_t	*wallimg;
+	mlx_image_t	*floorimg;
+	mlx_image_t	*cimg;
+	mlx_image_t	*pimg;
+	mlx_image_t	*eimg;
 }	t_game;
 
 
 // utils.c
 void		ft_error(char *str, t_content *content, int fd);
+void		ft_errorgame(char *str, t_game *game, int fd);
 void		ft_cleangnl(int fd);
 // utils_content.c
 void		ft_getrowscols(char *file, t_content *content);
@@ -54,9 +58,12 @@ t_content	*ft_initcontent(void);
 void		ft_freecontent(t_content *content);
 // mlx_utils.c
 void		ft_close(mlx_key_data_t keydata, void* param);
+void		ft_freeimg(t_game *game);
+void		ft_freetexture(mlx_texture_t	*texture);
 // game.c
 t_game		*ft_initgame(t_content *content);
 void		ft_freegame(t_game *game);
+// render.c
 void		ft_render(t_game *game);
 
 #endif
