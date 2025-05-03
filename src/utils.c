@@ -46,3 +46,11 @@ void	ft_cleangnl(int fd)
 	}
 	close(fd);
 }
+
+void	ft_win(char *str, t_game *game)
+{
+	if (game)
+		ft_freegame(game);
+	ft_printf("%s\n", str);
+	exit(1);
+}

@@ -49,6 +49,7 @@ typedef struct s_game
 	mlx_image_t	*floorimg;
 	mlx_image_t	*cimg;
 	mlx_image_t	*eimg;
+	int			moves;
 }	t_game;
 
 
@@ -56,6 +57,7 @@ typedef struct s_game
 void		ft_error(char *str, t_content *content, int fd);
 void		ft_errorgame(char *str, t_game *game, int fd);
 void		ft_cleangnl(int fd);
+void		ft_win(char *str, t_game *game);
 // utils_content.c
 void		ft_getrowscols(char *file, t_content *content);
 void		ft_countcontent(t_content *content);
@@ -74,9 +76,19 @@ void		ft_freetexture(mlx_texture_t	*texture);
 // game.c
 t_game		*ft_initgame(t_content *content);
 void		ft_freegame(t_game *game);
+char		ft_gettile(t_game *game, int x, int y);
 // render.c
 void		ft_render(t_game *game);
+void		ft_move(mlx_key_data_t keydata, void *param);
+void		ft_swaptile(t_game *game, int x, int y, char newchar);
 // player.c
 t_player	*ft_initplayer(t_game *game);
+int			ft_getx(t_game *game);
+int			ft_gety(t_game *game);
+// move.c
+int		ft_moveup(t_game *game);
+int		ft_movedown(t_game *game);
+int		ft_moveleft(t_game *game);
+int		ft_moveright(t_game *game);
 
 #endif

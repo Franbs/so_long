@@ -6,7 +6,7 @@
 #    By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 12:36:38 by fbanzo-s          #+#    #+#              #
-#    Updated: 2025/05/01 19:21:51 by fbanzo-s         ###   ########.fr        #
+#    Updated: 2025/05/03 16:30:24 by fbanzo-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 
 SRCS = so_long.c utils.c parser.c map.c content.c utils_content.c \
-mlx_utils.c game.c render.c player.c
+mlx_utils.c game.c render.c player.c move.c
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 

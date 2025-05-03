@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:55:59 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/01 19:44:03 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/03 18:34:22 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_game	*ft_initgame(t_content *content)
 		ft_errorgame("Error al inicializar mlx.", game, -1);
 	game->player = ft_initplayer(game);
 	ft_settextures(game);
+	game->moves = 0;
 	return (game);
 }
 
@@ -69,4 +70,26 @@ void	ft_freegame(t_game *game)
 	if (game->mlx)
 		mlx_terminate(game->mlx);
 	free(game);
+}
+
+char	ft_gettile(t_game *game, int x, int y)
+{
+	int		i;
+	int		j;
+	char	tile;
+
+	i = 0;
+	while (i < game->content->rows)
+	{
+		j = 0;
+		while (j < game->content->cols)
+		{
+			tile = game->content->map[i][j];
+			if (i == y && j == x)
+				return (tile);
+			j++;
+		}
+		i++;
+	}
+	return ('\0');
 }
