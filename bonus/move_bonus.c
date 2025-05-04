@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   move_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:25:53 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/04 14:21:21 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/04 15:48:36 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long_bonus.h"
 
-void	ft_updateplayerpos(t_game *game, int newx, int newy, mlx_image_t *img)
+void	ft_updateplayerpos(t_game_bonus *game, int newx, int newy, mlx_image_t *img)
 {
 	char		oldtile;
 	char		newtile;
@@ -33,7 +33,7 @@ void	ft_updateplayerpos(t_game *game, int newx, int newy, mlx_image_t *img)
 	game->player->posx = newx;
 }
 
-int	ft_moveup(t_game *game)
+int	ft_moveup(t_game_bonus *game)
 {
 	int			newx;
 	int			newy;
@@ -49,7 +49,7 @@ int	ft_moveup(t_game *game)
 	return (0);
 }
 
-int	ft_movedown(t_game *game)
+int	ft_movedown(t_game_bonus *game)
 {
 	int			newy;
 	int			newx;
@@ -65,7 +65,7 @@ int	ft_movedown(t_game *game)
 	return (0);
 }
 
-int	ft_moveleft(t_game *game)
+int	ft_moveleft(t_game_bonus *game)
 {
 	int			newx;
 	int			newy;
@@ -81,7 +81,7 @@ int	ft_moveleft(t_game *game)
 	return (0);
 }
 
-int	ft_moveright(t_game *game)
+int	ft_moveright(t_game_bonus *game)
 {
 	int			newx;
 	int			newy;

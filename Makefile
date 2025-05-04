@@ -6,7 +6,7 @@
 #    By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 12:36:38 by fbanzo-s          #+#    #+#              #
-#    Updated: 2025/05/03 16:30:24 by fbanzo-s         ###   ########.fr        #
+#    Updated: 2025/05/04 15:20:34 by fbanzo-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ HEADER = includes/so_long.h
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 # -fsanitize=address
-INCLUDES = -I$(LIBFT_DIR) -I.
+INCLUDES = -I$(LIBFT_DIR) -Iincludes
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX_DIR = ./MLX42
@@ -33,10 +33,22 @@ OBJ_DIR = obj
 
 SRCS = so_long.c utils.c parser.c map.c content.c utils_content.c \
 mlx_utils.c game.c render.c player.c move.c
+
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
+BONUS_NAME = so_long_bonus
+BONUS_HEADER = bonus/so_long_bonus.h
+BONUS_INCLUDES = -Iincludes -Ibonus -I$(LIBFT_DIR)
+BONUS_DIR = bonus
+BONUS_SRCS = so_long_bonus.c utils_bonus.c parser_bonus.c map_bonus.c content_bonus.c utils_content_bonus.c \
+mlx_utils_bonus.c game_bonus.c render_bonus.c player_bonus.c move_bonus.c
+BONUS_SRC = $(addprefix $(BONUS_DIR)/, $(BONUS_SRCS))
+BONUS_OBJ = $(addprefix $(OBJ_DIR)/, $(BONUS_SRCS:.c=.o))
+
 all: $(NAME)
+
+bonus: $(BONUS_NAME)
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR) --no-print-directory
@@ -46,9 +58,18 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-$(NAME): $(LIBFT) $(OBJ) $(OBJ_MAIN)
+$(OBJ_DIR)/%.o: $(BONUS_DIR)/%.c $(BONUS_HEADER)
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(BONUS_INCLUDES) -c $< -o $@
+
+$(NAME): $(LIBFT) $(OBJ)
 	@echo "$(YELLOW)Compilando $@...$(RESET)"
 	$(CC) $(CFLAGS) $(OBJ) $(MLX) $(MLX_INC) $(MLX_FLAGS) -L$(LIBFT_DIR) -lft -o $(NAME)
+	@echo "$(GREEN)Hecho$(RESET)"
+
+$(BONUS_NAME): $(LIBFT) $(BONUS_OBJ)
+	@echo "$(YELLOW)Compilando $@...$(RESET)"
+	$(CC) $(CFLAGS) $(BONUS_OBJ) $(MLX) $(MLX_INC) $(MLX_FLAGS) -L$(LIBFT_DIR) -lft -o $(BONUS_NAME)
 	@echo "$(GREEN)Hecho$(RESET)"
 
 clean:
@@ -59,8 +80,8 @@ clean:
 fclean: clean
 	@echo "$(RED)Limpiando todo...$(RESET)"
 	@make -C $(LIBFT_DIR) fclean --no-print-directory
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(BONUS_NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

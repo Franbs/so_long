@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 18:25:51 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/04 14:23:15 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/04 15:49:18 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_move(mlx_key_data_t keydata, void *param)
 {
-	t_game	*game;
+	t_game_bonus	*game;
 	int		moved;
 
 	game = param;
@@ -38,7 +38,7 @@ void	ft_move(mlx_key_data_t keydata, void *param)
 	ft_close(keydata, game->mlx);
 }
 
-void	ft_setimgstowindow(t_game *game, char tile, int i, int j)
+void	ft_setimgstowindow(t_game_bonus *game, char tile, int i, int j)
 {
 	mlx_image_to_window(game->mlx, game->floorimg, j * IMG_W, i * IMG_H);
 	if (tile == '1')
@@ -52,7 +52,7 @@ void	ft_setimgstowindow(t_game *game, char tile, int i, int j)
 			j * IMG_W, i * IMG_H);
 }
 
-void	ft_render(t_game *game)
+void	ft_render(t_game_bonus *game)
 {
 	int		i;
 	int		j;
@@ -72,7 +72,7 @@ void	ft_render(t_game *game)
 	}
 }
 
-int	ft_findchar(t_game *game, char tofind, int *x, int *y)
+int	ft_findchar(t_game_bonus *game, char tofind, int *x, int *y)
 {
 	int	i;
 	int	j;

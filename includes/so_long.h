@@ -39,7 +39,6 @@ typedef	struct s_player
 	mlx_image_t	*imgright;
 }	t_player;
 
-
 typedef struct s_game
 {
 	t_content	*content;
@@ -49,9 +48,9 @@ typedef struct s_game
 	mlx_image_t	*floorimg;
 	mlx_image_t	*cimg;
 	mlx_image_t	*eimg;
+	mlx_image_t	*eimgopen;
 	int			moves;
 }	t_game;
-
 
 // utils.c
 void		ft_error(char *str, t_content *content, int fd);
@@ -73,14 +72,15 @@ void		ft_freecontent(t_content *content);
 void		ft_close(mlx_key_data_t keydata, void* param);
 void		ft_freeimg(t_game *game);
 void		ft_freetexture(mlx_texture_t	*texture);
+void		ft_openexit(void *param);
 // game.c
 t_game		*ft_initgame(t_content *content);
 void		ft_freegame(t_game *game);
-char		ft_gettile(t_game *game, int x, int y);
+void		ft_checkexit(t_game *game, char oldtile, char newtile);
 // render.c
 void		ft_render(t_game *game);
 void		ft_move(mlx_key_data_t keydata, void *param);
-void		ft_swaptile(t_game *game, int x, int y, char newchar);
+int			ft_findchar(t_game *game, char tofind, int *x, int *y);
 // player.c
 t_player	*ft_initplayer(t_game *game);
 int			ft_getx(t_game *game);

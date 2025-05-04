@@ -27,8 +27,8 @@ void	ft_startmlx(t_content *content)
 	game = ft_initgame(content);
 	ft_render(game);
 	mlx_key_hook(game->mlx, &ft_move, game);
+	mlx_loop_hook(game->mlx, &ft_openexit, game);
 	mlx_loop(game->mlx);
-	ft_print_map(content);
 	ft_freegame(game);
 }
 
