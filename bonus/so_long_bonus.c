@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_bonus.c                                    :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 14:46:06 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/04 15:49:32 by fbanzo-s         ###   ########.fr       */
+/*   Created: 2025/04/07 18:31:42 by fbanzo-s          #+#    #+#             */
+/*   Updated: 2025/04/07 18:31:42 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../includes/so_long_bonus.h"
 
-void	ft_readmap(char *file, t_content_bonus *content)
+void	ft_readmap(char *file, t_content *content)
 {
 	ft_getrowscols(file, content);
 	ft_savemap(file, content);
@@ -20,9 +20,9 @@ void	ft_readmap(char *file, t_content_bonus *content)
 	ft_print_map(content);
 }
 
-void	ft_startmlx(t_content_bonus *content)
+void	ft_startmlx(t_content *content)
 {
-	t_game_bonus	*game;
+	t_game	*game;
 
 	game = ft_initgame(content);
 	ft_render(game);
@@ -34,7 +34,7 @@ void	ft_startmlx(t_content_bonus *content)
 
 int	main(int ac, char **av)
 {
-	t_content_bonus	*content;
+	t_content	*content;
 
 	if (ac != 2)
 		ft_error("Error. Send only a file", NULL, -1);

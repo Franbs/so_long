@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../includes/so_long_bonus.h"
 
-void	ft_error(char *str, t_content_bonus *content, int fd)
+void	ft_error(char *str, t_content *content, int fd)
 {
 	if (fd >= 0)
 		ft_cleangnl(fd);
@@ -22,7 +22,7 @@ void	ft_error(char *str, t_content_bonus *content, int fd)
 	exit(1);
 }
 
-void	ft_errorgame(char *str, t_game_bonus *game, int fd)
+void	ft_errorgame(char *str, t_game *game, int fd)
 {
 	if (fd >= 0)
 		ft_cleangnl(fd);
@@ -47,7 +47,7 @@ void	ft_cleangnl(int fd)
 	close(fd);
 }
 
-void	ft_win(char *str, t_game_bonus *game)
+void	ft_win(char *str, t_game *game)
 {
 	if (game)
 		ft_freegame(game);

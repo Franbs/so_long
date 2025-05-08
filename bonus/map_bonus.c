@@ -6,13 +6,13 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:29:40 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/04 15:48:05 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/08 17:49:43 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../includes/so_long_bonus.h"
 
-void	ft_mallocmap(t_content_bonus *content, int fd)
+void	ft_mallocmap(t_content *content, int fd)
 {
 	int		i;
 	char	*line;
@@ -41,7 +41,7 @@ void	ft_mallocmap(t_content_bonus *content, int fd)
 	content->map[i] = NULL;
 }
 
-void	ft_savemap(char *file, t_content_bonus *content)
+void	ft_savemap(char *file, t_content *content)
 {
 	int		fd;
 
@@ -53,7 +53,7 @@ void	ft_savemap(char *file, t_content_bonus *content)
 	close(fd);
 }
 
-void	ft_print_map(t_content_bonus *content)
+void	ft_print_map(t_content *content)
 {
 	int	i;
 

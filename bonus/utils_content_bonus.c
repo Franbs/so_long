@@ -6,13 +6,13 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 13:44:20 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/04 15:46:50 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/08 18:53:33 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../includes/so_long_bonus.h"
 
-void	ft_setcols(t_content_bonus *content, char *line, int current_len, int fd)
+void	ft_setcols(t_content *content, char *line, int current_len, int fd)
 {
 	if (content->rows == 0)
 		content->cols = current_len;
@@ -27,7 +27,7 @@ void	ft_setcols(t_content_bonus *content, char *line, int current_len, int fd)
 	}
 }
 
-void	ft_getrowscols(char *file, t_content_bonus *content)
+void	ft_getrowscols(char *file, t_content *content)
 {
 	int			fd;
 	char		*line;
@@ -50,7 +50,7 @@ void	ft_getrowscols(char *file, t_content_bonus *content)
 	close(fd);
 }
 
-void	ft_checkborders(char c, int i, int j, t_content_bonus *content)
+void	ft_checkborders(char c, int i, int j, t_content *content)
 {
 	if (i == 0 && c != '1')
 		ft_error("Error. All borders must be 1", content, -1);
@@ -62,7 +62,7 @@ void	ft_checkborders(char c, int i, int j, t_content_bonus *content)
 		ft_error("Error. All borders must be 1", content, -1);
 }
 
-void	ft_checkforcontent(char c, t_content_bonus *content)
+void	ft_checkforcontent(char c, t_content *content)
 {
 	if (c == 'E')
 		content->e++;
@@ -70,11 +70,13 @@ void	ft_checkforcontent(char c, t_content_bonus *content)
 		content->p++;
 	else if (c == 'C')
 		content->c++;
+	else if (c == 'T')
+		content->enemy++;
 	else if (c != '0' && c != '1')
 		ft_error("Error. Wrong char detected", content, -1);
 }
 
-void	ft_countcontent(t_content_bonus *content)
+void	ft_countcontent(t_content *content)
 {
 	int	i;
 	int	j;

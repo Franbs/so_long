@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 14:46:17 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/04 15:53:37 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/08 18:59:29 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define IMG_W 32
 # define IMG_H 32
 
-typedef struct s_content_bonus
+typedef struct s_content
 {
 	char	**map;
 	int		rows;
@@ -27,9 +27,10 @@ typedef struct s_content_bonus
 	int		p;
 	int		e;
 	int		c;
-}	t_content_bonus;
+	int		enemy;
+}	t_content;
 
-typedef	struct s_player_bonus
+typedef	struct s_player
 {
 	int			posx;
 	int			posy;
@@ -37,20 +38,28 @@ typedef	struct s_player_bonus
 	mlx_image_t	*imgdown;
 	mlx_image_t	*imgleft;
 	mlx_image_t	*imgright;
-}	t_player_bonus;
+}	t_player;
 
-typedef struct s_game_bonus
+typedef	struct s_enemy
 {
-	t_content_bonus	*content;
-	t_player_bonus	*player;
+	int			posx;
+	int			posy;
+}	t_enemy;
+
+typedef struct s_game
+{
+	t_content	*content;
+	t_player	*player;
 	mlx_t		*mlx;
 	mlx_image_t	*wallimg;
 	mlx_image_t	*floorimg;
 	mlx_image_t	*cimg;
 	mlx_image_t	*eimg;
 	mlx_image_t	*eimgopen;
+	mlx_image_t	*enemyimg;
+	t_enemy		*enemies;
 	int			moves;
-}	t_game_bonus;
+}	t_game;
 
 // utils.c
 void		ft_error(char *str, t_content *content, int fd);

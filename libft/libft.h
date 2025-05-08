@@ -20,7 +20,6 @@
 # include <stdio.h>
 # include "get_next_line.h"
 # include "ft_printf.h"
-# include "../includes/so_long.h"
 
 typedef struct s_list
 {

@@ -6,11 +6,11 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:27:54 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/04 15:48:20 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/08 17:50:11 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../includes/so_long_bonus.h"
 
 void	ft_close(mlx_key_data_t keydata, void *param)
 {
@@ -24,7 +24,7 @@ void	ft_close(mlx_key_data_t keydata, void *param)
 	}
 }
 
-void	ft_freeimg(t_game_bonus *game)
+void	ft_freeimg(t_game *game)
 {
 	if (game->floorimg)
 		mlx_delete_image(game->mlx, game->floorimg);
@@ -54,7 +54,7 @@ void	ft_freetexture(mlx_texture_t	*texture)
 
 void	ft_openexit(void *param)
 {
-	t_game_bonus	*game;
+	t_game	*game;
 	int		exitx;
 	int		exity;
 

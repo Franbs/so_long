@@ -6,13 +6,13 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:55:59 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/04 15:47:44 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/08 19:47:49 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../includes/so_long_bonus.h"
 
-mlx_texture_t	*ft_applytexture(char *path, t_game_bonus *game)
+mlx_texture_t	*ft_applytexture(char *path, t_game *game)
 {
 	mlx_texture_t	*texture;
 
@@ -22,7 +22,7 @@ mlx_texture_t	*ft_applytexture(char *path, t_game_bonus *game)
 	return (texture);
 }
 
-void	ft_settextures(t_game_bonus *game)
+void	ft_settextures(t_game *game)
 {
 	mlx_texture_t	*texture;
 
@@ -41,13 +41,16 @@ void	ft_settextures(t_game_bonus *game)
 	texture = ft_applytexture("./sprites/exit2.png", game);
 	game->eimgopen = mlx_texture_to_image(game->mlx, texture);
 	ft_freetexture(texture);
+	texture = ft_applytexture("./sprites/enemy.png", game);
+	game->enemyimg = mlx_texture_to_image(game->mlx, texture);
+	ft_freetexture(texture);
 }
 
-t_game	*ft_initgame(t_content_bonus *content)
+t_game	*ft_initgame(t_content *content)
 {
-	t_game_bonus	*game;
+	t_game	*game;
 
-	game = malloc(sizeof(t_game_bonus));
+	game = malloc(sizeof(t_game));
 	if (!game)
 		ft_error("Error.", content, -1);
 	game->content = content;
@@ -58,10 +61,11 @@ t_game	*ft_initgame(t_content_bonus *content)
 	game->player = ft_initplayer(game);
 	ft_settextures(game);
 	game->moves = 0;
+	game->enemies = ft_initenemies(game);
 	return (game);
 }
 
-void	ft_freegame(t_game_bonus *game)
+void	ft_freegame(t_game *game)
 {
 	if (!game)
 		return ;
@@ -75,7 +79,7 @@ void	ft_freegame(t_game_bonus *game)
 	free(game);
 }
 
-void	ft_checkexit(t_game_bonus *game, char oldtile, char newtile)
+void	ft_checkexit(t_game *game, char oldtile, char newtile)
 {
 	if (newtile == 'C')
 		game->content->c--;
