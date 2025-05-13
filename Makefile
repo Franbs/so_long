@@ -6,7 +6,7 @@
 #    By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 12:36:38 by fbanzo-s          #+#    #+#              #
-#    Updated: 2025/05/08 18:02:10 by fbanzo-s         ###   ########.fr        #
+#    Updated: 2025/05/13 19:26:40 by fbanzo-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,11 @@ OBJ_DIR = obj
 BONUS_DIR = bonus
 
 SRCS = so_long.c utils.c parser.c map.c content.c utils_content.c \
-mlx_utils.c game.c render.c player.c move.c
+mlx_utils.c game.c render.c player.c move.c route.c mapdup.c
 
 BONUS_SRCS = so_long_bonus.c utils_bonus.c parser_bonus.c map_bonus.c content_bonus.c utils_content_bonus.c \
-mlx_utils_bonus.c game_bonus.c render_bonus.c player_bonus.c move_bonus.c
+mlx_utils_bonus.c game_bonus.c render_bonus.c player_bonus.c move_bonus.c enemy_bonus.c route_bonus.c \
+mapdup_bonus.c
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))

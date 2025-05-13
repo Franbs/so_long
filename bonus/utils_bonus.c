@@ -54,3 +54,11 @@ void	ft_win(char *str, t_game *game)
 	ft_printf("%s\n", str);
 	exit(1);
 }
+
+void	ft_lose(char *str, t_game *game)
+{
+	if (game)
+		ft_freegame(game);
+	ft_printf("%s\n", str);
+	exit(1);
+}

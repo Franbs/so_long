@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:25:53 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/08 17:50:14 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/13 17:25:59 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	ft_updateplayerpos(t_game *game, int newx, int newy, mlx_image_t *img)
 	newtile = game->content->map[newy][newx];
 	oldtile = game->content->map[game->player->posy][game->player->posx];
 	ft_checkexit(game, oldtile, newtile);
+	if (newtile == 'T')
+		ft_lose("YOU LOST!\n", game);
 	if (newtile != 'E')
 	{
 		game->content->map[newy][newx] = 'P';

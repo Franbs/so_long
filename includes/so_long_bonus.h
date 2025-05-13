@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 14:46:17 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/08 18:59:29 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/13 19:18:58 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@
 # include <limits.h>
 # define IMG_W 32
 # define IMG_H 32
+
+typedef	struct s_mapdup
+{
+	char	**map;
+	int		rows;
+	int		cols;
+	int		e;
+	int		c;
+}	t_mapdup;
+
 
 typedef struct s_content
 {
@@ -66,6 +76,7 @@ void		ft_error(char *str, t_content *content, int fd);
 void		ft_errorgame(char *str, t_game *game, int fd);
 void		ft_cleangnl(int fd);
 void		ft_win(char *str, t_game *game);
+void		ft_lose(char *str, t_game *game);
 // utils_content.c
 void		ft_getrowscols(char *file, t_content *content);
 void		ft_countcontent(t_content *content);
@@ -86,6 +97,7 @@ void		ft_openexit(void *param);
 t_game		*ft_initgame(t_content *content);
 void		ft_freegame(t_game *game);
 void		ft_checkexit(t_game *game, char oldtile, char newtile);
+t_enemy		*ft_initenemies(t_game *game);
 // render.c
 void		ft_render(t_game *game);
 void		ft_move(mlx_key_data_t keydata, void *param);
@@ -95,9 +107,15 @@ t_player	*ft_initplayer(t_game *game);
 int			ft_getx(t_game *game);
 int			ft_gety(t_game *game);
 // move.c
-int		ft_moveup(t_game *game);
-int		ft_movedown(t_game *game);
-int		ft_moveleft(t_game *game);
-int		ft_moveright(t_game *game);
+int			ft_moveup(t_game *game);
+int			ft_movedown(t_game *game);
+int			ft_moveleft(t_game *game);
+int			ft_moveright(t_game *game);
+// route_bonus.c
+void		ft_checkroutes(t_game *game, char *file);
+// mapdup_bonus.c
+t_mapdup	*ft_initmapdup(t_game *game);
+void		ft_freemapdup(t_mapdup *mapdup);
+void		ft_savemapdup(t_game *game, t_mapdup *mapdup, char *file);
 
 #endif

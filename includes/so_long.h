@@ -19,6 +19,15 @@
 # define IMG_W 32
 # define IMG_H 32
 
+typedef	struct s_mapdup
+{
+	char	**map;
+	int		rows;
+	int		cols;
+	int		e;
+	int		c;
+}	t_mapdup;
+
 typedef struct s_content
 {
 	char	**map;
@@ -90,5 +99,11 @@ int		ft_moveup(t_game *game);
 int		ft_movedown(t_game *game);
 int		ft_moveleft(t_game *game);
 int		ft_moveright(t_game *game);
+// route.c
+void		ft_checkroutes(t_game *game, char *file);
+// mapdup.c
+t_mapdup	*ft_initmapdup(t_game *game);
+void		ft_freemapdup(t_mapdup *mapdup);
+void		ft_savemapdup(t_game *game, t_mapdup *mapdup, char *file);
 
 #endif

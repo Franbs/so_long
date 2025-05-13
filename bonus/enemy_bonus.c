@@ -6,17 +6,18 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 19:12:20 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/08 19:54:47 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/13 17:09:15 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-t_enemy	*ft_initenemy()
+t_enemy	ft_initenemy(int x, int y)
 {
-	t_enemy	*enemy;
+	t_enemy	enemy;
 
-	
+	enemy.posx = x;
+	enemy.posy = y;
 	return (enemy);
 }
 
