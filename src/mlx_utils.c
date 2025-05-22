@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:27:54 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/04 14:20:20 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/22 11:52:16 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_close(mlx_key_data_t keydata, void *param)
 	mlx = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		ft_printf("See you next time!");
+		ft_printf("See you next time!\n");
 		mlx_close_window(mlx);
 	}
 }
