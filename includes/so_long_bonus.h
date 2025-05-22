@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 14:46:17 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/13 19:18:58 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/22 12:09:24 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_game
 	mlx_image_t	*eimg;
 	mlx_image_t	*eimgopen;
 	mlx_image_t	*enemyimg;
+	mlx_image_t	*movestxtimg;
 	t_enemy		*enemies;
 	int			moves;
 }	t_game;
@@ -102,6 +103,7 @@ t_enemy		*ft_initenemies(t_game *game);
 void		ft_render(t_game *game);
 void		ft_move(mlx_key_data_t keydata, void *param);
 int			ft_findchar(t_game *game, char tofind, int *x, int *y);
+void		ft_movecount(void *param);
 // player.c
 t_player	*ft_initplayer(t_game *game);
 int			ft_getx(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:55:59 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/08 19:47:49 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/22 12:20:55 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_game	*ft_initgame(t_content *content)
 	ft_settextures(game);
 	game->moves = 0;
 	game->enemies = ft_initenemies(game);
+	game->movestxtimg = NULL;
 	return (game);
 }
 
@@ -84,10 +85,7 @@ void	ft_checkexit(t_game *game, char oldtile, char newtile)
 	if (newtile == 'C')
 		game->content->c--;
 	if (newtile == 'E' && game->content->c <= 0)
-	{
-		ft_printf("moves: %d\n", (game->moves + 1));
 		ft_win("YOU WON!", game);
-	}
 	if (oldtile == 'E')
 	{
 		mlx_image_to_window(game->mlx, game->eimg,

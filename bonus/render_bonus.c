@@ -6,11 +6,30 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 18:25:51 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/13 18:54:56 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/22 12:21:20 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
+
+void	ft_movecount(void *param)
+{
+	t_game	*game;
+	char	*moves;
+	char	*movesstr;
+
+	game = param;
+	if (!game)
+		return ;
+	moves = ft_itoa(game->moves);
+	movesstr = ft_strjoin("Moves: ", moves);
+	if (game->movestxtimg)
+		mlx_delete_image(game->mlx, game->movestxtimg);
+	game->movestxtimg = mlx_put_string(game->mlx, movesstr,
+			10, 10);
+	free(moves);
+	free(movesstr);
+}
 
 void	ft_move(mlx_key_data_t keydata, void *param)
 {
@@ -30,10 +49,7 @@ void	ft_move(mlx_key_data_t keydata, void *param)
 		if (keydata.key == MLX_KEY_D)
 			moved = ft_moveright(game);
 		if (moved)
-		{
 			game->moves += moved;
-			ft_printf("moves: %d\n", game->moves);
-		}
 	}
 	ft_close(keydata, game->mlx);
 }
