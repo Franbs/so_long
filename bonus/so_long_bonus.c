@@ -25,7 +25,6 @@ void	ft_startmlx(t_content *content, char *file)
 
 	game = ft_initgame(content);
 	ft_checkroutes(game, file);
-	ft_print_map(game->content);
 	ft_render(game);
 	mlx_key_hook(game->mlx, &ft_move, game);
 	mlx_loop_hook(game->mlx, &ft_movecount, game);
