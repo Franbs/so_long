@@ -6,7 +6,7 @@
 #    By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 12:36:38 by fbanzo-s          #+#    #+#              #
-#    Updated: 2025/05/13 19:26:40 by fbanzo-s         ###   ########.fr        #
+#    Updated: 2025/05/22 13:29:44 by fbanzo-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,12 +63,12 @@ $(OBJ_DIR)/%.o: $(BONUS_DIR)/%.c $(BONUS_HEADER)
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME): $(LIBFT) $(OBJ) Makefile
 	@echo "$(YELLOW)Compilando $@...$(RESET)"
 	$(CC) $(CFLAGS) $(OBJ) $(MLX) $(MLX_INC) $(MLX_FLAGS) -L$(LIBFT_DIR) -lft -o $(NAME)
 	@echo "$(GREEN)Hecho$(RESET)"
 
-$(BONUS_NAME): $(LIBFT) $(BONUS_OBJ)
+$(BONUS_NAME): $(LIBFT) $(BONUS_OBJ) Makefile
 	@echo "$(YELLOW)Compilando $@...$(RESET)"
 	$(CC) $(CFLAGS) $(BONUS_OBJ) $(MLX) $(MLX_INC) $(MLX_FLAGS) -L$(LIBFT_DIR) -lft -o $(BONUS_NAME)
 	@echo "$(GREEN)Hecho$(RESET)"

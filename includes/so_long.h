@@ -19,7 +19,7 @@
 # define IMG_W 32
 # define IMG_H 32
 
-typedef	struct s_mapdup
+typedef struct s_mapdup
 {
 	char	**map;
 	int		rows;
@@ -38,7 +38,7 @@ typedef struct s_content
 	int		c;
 }	t_content;
 
-typedef	struct s_player
+typedef struct s_player
 {
 	int			posx;
 	int			posy;
@@ -78,7 +78,7 @@ void		ft_savemap(char *file, t_content *content);
 t_content	*ft_initcontent(void);
 void		ft_freecontent(t_content *content);
 // mlx_utils.c
-void		ft_close(mlx_key_data_t keydata, void* param);
+void		ft_close(mlx_key_data_t keydata, void *param);
 void		ft_freeimg(t_game *game);
 void		ft_freetexture(mlx_texture_t	*texture);
 void		ft_openexit(void *param);
@@ -95,10 +95,10 @@ t_player	*ft_initplayer(t_game *game);
 int			ft_getx(t_game *game);
 int			ft_gety(t_game *game);
 // move.c
-int		ft_moveup(t_game *game);
-int		ft_movedown(t_game *game);
-int		ft_moveleft(t_game *game);
-int		ft_moveright(t_game *game);
+int			ft_moveup(t_game *game);
+int			ft_movedown(t_game *game);
+int			ft_moveleft(t_game *game);
+int			ft_moveright(t_game *game);
 // route.c
 void		ft_checkroutes(t_game *game, char *file);
 // mapdup.c

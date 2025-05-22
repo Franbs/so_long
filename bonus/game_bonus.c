@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:55:59 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/22 12:20:55 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:48:08 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_game	*ft_initgame(t_content *content)
 		ft_error("Error.", content, -1);
 	game->content = content;
 	game->mlx = mlx_init((content->cols * IMG_W), (content->rows * IMG_H),
-			"so_long", false);
+			"so_long", true);
 	if (!game->mlx)
 		ft_errorgame("Error al inicializar mlx.", game, -1);
 	game->player = ft_initplayer(game);

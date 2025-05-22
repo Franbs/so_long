@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 14:46:17 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/22 12:09:24 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:50:38 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define IMG_W 32
 # define IMG_H 32
 
-typedef	struct s_mapdup
+typedef struct s_mapdup
 {
 	char	**map;
 	int		rows;
@@ -27,7 +27,6 @@ typedef	struct s_mapdup
 	int		e;
 	int		c;
 }	t_mapdup;
-
 
 typedef struct s_content
 {
@@ -40,7 +39,7 @@ typedef struct s_content
 	int		enemy;
 }	t_content;
 
-typedef	struct s_player
+typedef struct s_player
 {
 	int			posx;
 	int			posy;
@@ -50,7 +49,7 @@ typedef	struct s_player
 	mlx_image_t	*imgright;
 }	t_player;
 
-typedef	struct s_enemy
+typedef struct s_enemy
 {
 	int			posx;
 	int			posy;
@@ -90,7 +89,7 @@ void		ft_savemap(char *file, t_content *content);
 t_content	*ft_initcontent(void);
 void		ft_freecontent(t_content *content);
 // mlx_utils.c
-void		ft_close(mlx_key_data_t keydata, void* param);
+void		ft_close(mlx_key_data_t keydata, void *param);
 void		ft_freeimg(t_game *game);
 void		ft_freetexture(mlx_texture_t	*texture);
 void		ft_openexit(void *param);
