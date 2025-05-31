@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 19:12:20 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/13 17:09:15 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/31 16:11:50 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,13 @@ t_enemy	*ft_initenemies(t_game *game)
 		i++;
 	}
 	return (enemies);
+}
+
+void	ft_freeenemies(t_game *game)
+{
+	if (game && game->enemies)
+	{
+		free(game->enemies);
+		game->enemies = NULL;
+	}
 }

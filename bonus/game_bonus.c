@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:55:59 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/22 13:48:08 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/31 16:14:40 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	ft_freegame(t_game *game)
 	ft_freeimg(game);
 	if (game->player)
 		free(game->player);
+	ft_freeenemies(game);
 	if (game->content)
 		ft_freecontent(game->content);
 	if (game->mlx)

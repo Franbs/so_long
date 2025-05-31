@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 14:46:17 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/22 13:50:38 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/31 16:14:11 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,9 @@ void		ft_openexit(void *param);
 t_game		*ft_initgame(t_content *content);
 void		ft_freegame(t_game *game);
 void		ft_checkexit(t_game *game, char oldtile, char newtile);
+// enemy_bonus.c
 t_enemy		*ft_initenemies(t_game *game);
+void		ft_freeenemies(t_game *game);
 // render.c
 void		ft_render(t_game *game);
 void		ft_move(mlx_key_data_t keydata, void *param);

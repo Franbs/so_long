@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 14:55:27 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/08 17:49:34 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/05/31 14:54:04 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_content	*ft_initcontent(void)
 	content->p = 0;
 	content->e = 0;
 	content->c = 0;
+	content->enemy = 0;
 	return (content);
 }
 
