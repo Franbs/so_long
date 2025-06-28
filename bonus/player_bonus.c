@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 18:49:25 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/08 17:50:19 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/06/28 18:24:24 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,9 @@ t_player	*ft_initplayer(t_game *game)
 		ft_errorgame("Error.", game, -1);
 	player->posx = ft_getx(game);
 	player->posy = ft_gety(game);
-	texture = mlx_load_png("./sprites/player.png");
-	player->imgdown = mlx_texture_to_image(game->mlx, texture);
-	ft_freetexture(texture);
-	texture = mlx_load_png("./sprites/playerup.png");
-	player->imgup = mlx_texture_to_image(game->mlx, texture);
-	ft_freetexture(texture);
-	texture = mlx_load_png("./sprites/playerleft.png");
-	player->imgleft = mlx_texture_to_image(game->mlx, texture);
-	ft_freetexture(texture);
-	texture = mlx_load_png("./sprites/playerright.png");
-	player->imgright = mlx_texture_to_image(game->mlx, texture);
-	ft_freetexture(texture);
+	player->imgdown = ft_applytexture("./sprites/player.png", game);
+	player->imgup = ft_applytexture("./sprites/playerup.png", game);
+	player->imgleft = ft_applytexture("./sprites/playerleft.png", game);
+	player->imgright = ft_applytexture("./sprites/playerright.png", game);
 	return (player);
 }

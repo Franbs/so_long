@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:27:54 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/05/22 11:52:16 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/06/28 17:36:24 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_close(mlx_key_data_t keydata, void *param)
 
 void	ft_freeimg(t_game *game)
 {
+	if (!game || !game->mlx)
+		return ;
 	if (game->floorimg)
 		mlx_delete_image(game->mlx, game->floorimg);
 	if (game->wallimg)
@@ -36,14 +38,17 @@ void	ft_freeimg(t_game *game)
 		mlx_delete_image(game->mlx, game->eimg);
 	if (game->eimgopen)
 		mlx_delete_image(game->mlx, game->eimgopen);
-	if (game->player->imgdown)
-		mlx_delete_image(game->mlx, game->player->imgdown);
-	if (game->player->imgup)
-		mlx_delete_image(game->mlx, game->player->imgup);
-	if (game->player->imgleft)
-		mlx_delete_image(game->mlx, game->player->imgleft);
-	if (game->player->imgright)
-		mlx_delete_image(game->mlx, game->player->imgright);
+	if (game->player)
+	{
+		if (game->player->imgdown)
+			mlx_delete_image(game->mlx, game->player->imgdown);
+		if (game->player->imgup)
+			mlx_delete_image(game->mlx, game->player->imgup);
+		if (game->player->imgleft)
+			mlx_delete_image(game->mlx, game->player->imgleft);
+		if (game->player->imgright)
+			mlx_delete_image(game->mlx, game->player->imgright);
+	}
 }
 
 void	ft_freetexture(mlx_texture_t	*texture)
