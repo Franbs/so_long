@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 18:49:25 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/06/28 18:24:24 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/06/28 18:33:57 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	ft_getx(t_game *game)
 t_player	*ft_initplayer(t_game *game)
 {
 	t_player		*player;
-	mlx_texture_t	*texture;
 
 	player = malloc(sizeof(t_player));
 	if (!player)

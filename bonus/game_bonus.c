@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:55:59 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/06/28 18:26:22 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/06/28 18:41:17 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ mlx_image_t	*ft_applytexture(char *path, t_game *game)
 
 void	ft_settextures(t_game *game)
 {
-	mlx_texture_t	*texture;
-
 	game->floorimg = ft_applytexture("./sprites/floor.png", game);
 	game->wallimg = ft_applytexture("./sprites/wall3.png", game);
 	game->cimg = ft_applytexture("./sprites/coinsmall.png", game);
@@ -54,6 +52,7 @@ t_game	*ft_initgame(t_content *content)
 	game->eimg = NULL;
 	game->eimgopen = NULL;
 	game->moves = 0;
+	game->enemies = NULL;
 	game->content = content;
 	game->mlx = mlx_init((content->cols * IMG_W), (content->rows * IMG_H),
 			"so_long", true);
@@ -72,9 +71,9 @@ void	ft_freegame(t_game *game)
 	if (!game)
 		return ;
 	ft_freeimg(game);
+	ft_freeenemies(game);
 	if (game->player)
 		free(game->player);
-	ft_freeenemies(game);
 	if (game->content)
 		ft_freecontent(game->content);
 	if (game->mlx)
